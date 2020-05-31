@@ -8,7 +8,7 @@
  * 📅 2020-05-31
  */
 
- 
+
 const randomUserURL = 'https://randomuser.me/api/?format=json&results=12&nat=us'; //RandomUserAPI with formatting to get results in JSON, for 12 users, nationality = us
 const body = document.querySelector('body');
 const galleryDiv = document.querySelector('div#gallery'); //Aera to populate with users
@@ -44,7 +44,6 @@ function checkStatus(response) {
 }
 
 function getUserList(response) {
-    console.log(response.results);
     return response['results'];
 }
 
