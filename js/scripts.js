@@ -2,14 +2,10 @@
 const randomUserURL = 'https://randomuser.me/api/?format=json&results=12&nat=us'; //RandomUserAPI with formatting to get results in JSON, for 12 users, nationality = us
 const body = document.querySelector('body');
 const galleryDiv = document.querySelector('div#gallery'); //Aera to populate with users
-const userArray = galleryDiv.children;
-const modalContainerArray = document.querySelectorAll('div.modal-container');
-
 
 // ------------------------------------------
 //  FETCH FUNCTIONS
 // ------------------------------------------
-
 
 function fetchData(url) {
     return fetch(url)
@@ -17,6 +13,7 @@ function fetchData(url) {
             .then(response => response.json())
             .catch( error => console.log('Looks like there was a problem', error))
 }
+
 
 fetchData(randomUserURL)
     .then(getUserList)
@@ -27,6 +24,7 @@ fetchData(randomUserURL)
 // ------------------------------------------
 //  HELPER FUNCTIONS
 // ------------------------------------------
+
 function checkStatus(response) {
     if(response.ok){
         return Promise.resolve(response);
@@ -36,8 +34,15 @@ function checkStatus(response) {
 }
 
 function getUserList(response) {
+    console.log(response.results);
     return response['results'];
 }
+
+/**
+ * Function displayUsers()
+ * Uses RandomUserAPI data to generate user cards and modal windows
+ * @param {promise} userList - array of user objects
+ */
 
 function displayUsers(userList){
 
@@ -77,12 +82,16 @@ function displayUsers(userList){
             <p class="card-text">${email}</p>
             <p class="card-text cap">${city}, ${state}</p>
         `;
-
-        userSection.addEventListener('click', () => {console.log(`user ${firstName} ${lastName} clicked`)});
         
+        //append nodes
+        galleryDiv.appendChild(userSection);
+        userSection.appendChild(userSection_cardImgContainer);
+        userSection.appendChild(userSection_cardInfoContainer);      
         
-        // CREATE MODAL SECTION
-        // - initialized as hidden
+        /**
+         * function generateModal()
+         * creates a modal window for the user card
+         */
         function generateModal() {
             const modalContainer = document.createElement('div');
             modalContainer.classList.add('modal-container');
@@ -110,7 +119,7 @@ function displayUsers(userList){
                 <hr>
                 <p class="modal-text">${phoneNumber}</p>
                 <p class="modal-text">${streetNumber} ${streetName}, ${city}, ${state} ${postcode}</p>
-                <p class="modal-text">Birthday: ${birthday.getMonth()}/${birthday.getDay()}/${birthday.getFullYear()}</p> 
+                <p class="modal-text">Birthday: ${birthday.getMonth() + 1}/${birthday.getDate()}/${birthday.getFullYear()}</p> 
             `;
 
             body.appendChild(modalContainer);
@@ -122,13 +131,8 @@ function displayUsers(userList){
             } );
         }
         
-        //append nodes
-        galleryDiv.appendChild(userSection);
-        userSection.appendChild(userSection_cardImgContainer);
-        userSection.appendChild(userSection_cardInfoContainer);
         
-        
-
+        // When a user is clicked, generate a modal window for that user
         userSection.addEventListener('click', () => {
             generateModal();
         });
@@ -137,10 +141,3 @@ function displayUsers(userList){
     });
     
 }
-
-// ------------------------------------------
-//  EVENT LISTENERS
-// ------------------------------------------
-
-console.log('userArray: ',userArray);
-console.log('modalContainerArray: ', modalContainerArray);

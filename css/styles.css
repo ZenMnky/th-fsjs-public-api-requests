@@ -16,8 +16,8 @@ html, body {
 body {
     font-family: "Nunito", sans-serif;
     text-align: center;
-    background: rgba(235, 235, 235, 0.9);
-    /* background: #696060; */
+    /* background: rgba(235, 235, 235, 0.9); */
+    background: #C0A591;
 }
 
 header {
@@ -31,7 +31,8 @@ header {
 
 header h1 {
     font-size: 1.25em;
-    color: rgba(50, 50, 50, 0.9);
+    /* color: rgba(50, 50, 50, 0.9); */
+    color: rgba(50, 50, 50, 0.7);
     margin-top: 35px;
 }
 
@@ -88,9 +89,11 @@ header h1 {
     max-width: 360px;
     margin: 10px 10px 20px;
     padding: 10px;
-    background: rgba(245, 245, 245, 0.9);
+    /* background: rgba(245, 245, 245, 0.9); */
+    background: #EACAA8;
     border-radius: 0.25em;
-    border: 1px solid rgba(50, 50, 50, 0.3);
+    /* border: 1px solid rgba(50, 50, 50, 0.3); */
+    border: 1px solid #6D676B;
     transition: .4s ease-out;
     overflow: hidden;
 }
@@ -141,7 +144,8 @@ header h1 {
     min-height: 415px;
     margin: 10px auto auto;
     padding-bottom: 15px;
-    background: rgba(255, 255, 255, 1);
+    /* background: rgba(255, 255, 255, 1); */
+    background: #B3AC8C;
     border-radius: 0.25em;
     border: 1px solid rgba(100, 100, 100, 0.3);
     transition: .4s ease-out;
@@ -249,7 +253,8 @@ header h1 {
 @media (min-width: 1024px) {
 
     .card:hover {
-        background: rgba(255, 255, 255, 1);
+        /* background: rgba(255, 255, 255, 1); */
+        background: #B3AC8C;
         border: 1px solid rgba(50, 50, 50, 0.9);
     }
 
